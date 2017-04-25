@@ -34,6 +34,7 @@ public:
 
   ///* time when the state is true, in us
   long long time_us_;
+  long long previous_timestamp_;
 
   ///* Process noise standard deviation longitudinal acceleration in m/s^2
   double std_a_;
@@ -74,6 +75,7 @@ public:
   ///* the current NIS for laser
   double NIS_laser_;
 
+  bool temp;
   /**
    * Constructor
    */
@@ -102,12 +104,20 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateLidar(MeasurementPackage meas_package);
+  void UpdateLidarKF(MeasurementPackage meas_package);
 
   /**
    * Updates the state and the state covariance matrix using a radar measurement
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  // Calculates the Predicted Measurement covariance S
+  Eigen::MatrixXd CalculateS(const Eigen::VectorXd& z_pred, const Eigen::MatrixXd& Zsig, const Eigen::MatrixXd& R);
+
+  // Calculates the Cross Correlation Matrix T
+  Eigen::MatrixXd CalculateT(const Eigen::VectorXd& z_pred, const Eigen::MatrixXd& Zsig);
+
 };
 
 #endif /* UKF_H */
