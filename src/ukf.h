@@ -76,6 +76,10 @@ public:
   double NIS_laser_;
 
   bool temp;
+  int cnt;
+
+  Tools tools_;
+
   /**
    * Constructor
    */

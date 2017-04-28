@@ -3,6 +3,48 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Problem Statement
+
+Implement an Unscented Kalman filter to track a bicycle moving around the car using the Constant Turn Rate and Velocity (CTRV) motion model. Using radar and laser measurements develop a sensor fusion algorithm in C++ to track the bicycle's position,  velocity, yaw and yaw rate.
+
+## Algorithm flow
+
+The CTRV motion model is non-linear and the tracking is achieved using an Unscented Kalman filter. The main steps in programming a Kalman filter are:
+
+1. **Initializing** Kalman filter variables
+2. **Predicting** where the object is going to be after a time step Δt
+3. **Updating** where the object is based on sensor measurements
+
+The 2 measurements - laser and radar are used to track the bicycle using a Kalman filter and Unscented Kalman filter respectively.
+
+## Output
+
+The tracking accuracy is measured using the RMSE metric for position and velocity in x and y directions.
+
+For obj_pose-laser-radar-synthetic-input.txt, the RMSE values are:
+
+| Measurement | RMSE|
+| --- | --- |
+| Position (x) | 0.0610955 |
+| Position (y) | 0.0858379 |
+| Velocity (x) | 0.329842  |
+| Velocity (y) | 0.213266  |
+
+The position, velocity and yaw estimates vs the ground truth:
+
+![Alt text](Pos_Est.png?raw=true)
+
+![Alt text](Vel_Est.png?raw=true)
+
+![Alt text](Yaw_Est.png?raw=true)
+
+The Normalized Innovation Squared (NIS) for Laser and Radar measurements are captured:
+
+![Alt text](Radar_NIS.png?raw=true)
+
+![Alt text](Laser_NIS.png?raw=true)
+
+
 ## Dependencies
 
 * cmake >= v3.5
@@ -16,31 +58,4 @@ Self-Driving Car Engineer Nanodegree Program
 3. Compile: `cmake .. && make`
 4. Run it: `./UnscentedKF path/to/input.txt path/to/output.txt`. You can find
    some sample inputs in 'data/'.
-    - eg. `./UnscentedKF ../data/obj_pose-laser-radar-synthetic-input.txt`
-
-## Editor Settings
-
-We've purposefully kept editor configuration files out of this repo in order to
-keep it as simple and environment agnostic as possible. However, we recommend
-using the following settings:
-
-* indent using spaces
-* set tab width to 2 spaces (keeps the matrices in source code aligned)
-
-## Code Style
-
-Please stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html) as much as possible.
-
-## Generating Additional Data
-
-This is optional!
-
-If you'd like to generate your own radar and lidar data, see the
-[utilities repo](https://github.com/udacity/CarND-Mercedes-SF-Utilities) for
-Matlab scripts that can generate additional data.
-
-## Project Instructions and Rubric
-
-This information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/c3eb3583-17b2-4d83-abf7-d852ae1b9fff/concepts/f437b8b0-f2d8-43b0-9662-72ac4e4029c1)
-for instructions and the project rubric.
+    - eg. `./UnscentedKF ../data/obj_pose-laser-radar-synthetic-input.txt ../output.txt`

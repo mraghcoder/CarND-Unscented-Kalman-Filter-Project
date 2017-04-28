@@ -47,3 +47,8 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     rmse = acc_err.array().sqrt();
   	return rmse;
 }
+
+double Tools::AngleWrap(double& angle)
+{
+  return atan2(sin(angle),cos(angle));
+}
