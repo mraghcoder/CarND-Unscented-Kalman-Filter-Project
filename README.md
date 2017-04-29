@@ -25,10 +25,10 @@ For obj_pose-laser-radar-synthetic-input.txt, the RMSE values are:
 
 | Measurement | RMSE|
 | --- | --- |
-| Position (x) | 0.0610955 |
-| Position (y) | 0.0858379 |
-| Velocity (x) | 0.329842  |
-| Velocity (y) | 0.213266  |
+| Position (x) | 0.0610955 (m)|
+| Position (y) | 0.0858379 (m)|
+| Velocity (x) | 0.329842  (m/s)|
+| Velocity (y) | 0.213266  (m/s)|
 
 The position, velocity and yaw estimates vs the ground truth:
 
